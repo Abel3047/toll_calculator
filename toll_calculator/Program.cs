@@ -4,7 +4,7 @@ using CommercialRegistration;
 using ConsumerVehicleRegistration;
 using LiveryRegistration;
 
-namespace toll_calculator
+namespace toll_calculator_and_SwitchLearning
 {
     class Program
     {

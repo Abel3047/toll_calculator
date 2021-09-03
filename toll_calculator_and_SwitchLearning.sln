@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toll_calculator", "toll_calculator\toll_calculator.csproj", "{522CAE8B-8564-4D30-AD3F-15AEEBEAA43B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "toll_calculator_and_SwitchLearning", "toll_calculator\toll_calculator_and_SwitchLearning.csproj", "{522CAE8B-8564-4D30-AD3F-15AEEBEAA43B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
