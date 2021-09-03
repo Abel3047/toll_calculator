@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CommercialRegistration;
 using ConsumerVehicleRegistration;
 using LiveryRegistration;
@@ -232,6 +233,47 @@ namespace toll_calculator
         (true, TimeBand.Overnight, _) => 0.75m,
         _ => 1.00m //this is cause everything else is 1.00
     };
+
+
+
+        /*
+         Here we have a return type being a tuple and the parameter also being a tuple. This example shows a great way to compare many values and give concise results.
+        It acts like a really compact if else statement. So when ever you find that you are getting 3 or more if else statements, use this
+         */
+        public (string place, string Name, string colour, string message) Participant((int Position, string name, double height, bool female) athelete) =>
+            athelete switch
+            {
+                (1, not "Lesego", not < 150.0, _) => ("First", athelete.name, "Gold", "Congragulations, World Champion"),
+                (1, not "Lesego", < 150, _) => ("First", athelete.name, "Gold", $"Amazing, with your height you are the new guru God!! All Hail {athelete.name}!!"),
+                // you have to put the above statement above/away from the lesego branch cause it wont compute below it
+                
+                (_,_,200.0,true)=>(athelete.Position.ToString(),athelete.name,null,"She is 200 cm"), //this would have shown up way too many times in multiple if else brackets
+                (2,_,_,_)=>("Second",athelete.name,"Silver", "Congragulations! Incredible achievement"),
+                (3,_,_,_)=>("Third",athelete.name,"Bronze", "Congragulations, you are one of the best in the world"),
+                (<=3,_,_,true)=>(null,athelete.name,null, $"{athelete.name}, {athelete.name.ToUpper()}!, " +
+                "Please tell us, how does it feel to be a leading woman in a sport that has only recenty had women participate along men"),
+                (1,"Lesego",_,_)=>(null, athelete.name, "Black",$"{athelete.name.ToUpper()}, you stand undefeated yet again, What say you to your disciples?"),
+                (>3,_,_,false)=>(null, athelete.name,null,$" We believe in you {athelete.name}!"),
+                (>3,_,_,true)=>(null, athelete.name,null,$"You go girl! stomp the competition {athelete.name}"),
+                (0, null,0,_)=> throw new ArgumentNullException("Did noone compete?"),
+                var someObject => throw new ArgumentException("That was just some fast random object")
+            };
+        //Note how we used all the variables in the tuple parameter, this should be the case always. Otherwise its just a waste
+
+
+        public void Acheivement()
+        {
+            List<(string place, string Name, string colour, string message)> SportsLiveCommentary = new List<(string place, string Name, string colour, string message)>
+            {
+                Participant((4, "Leon", 179, true)), Participant((1, "Lesego", 179, true)), Participant((6, "Michelle", 179, true)),
+                Participant((2, "Abel", 188, false)),Participant((3, "Clark Kent", 201, false)),Participant((2, "She-Hulk", 212, true))
+            };
+            foreach (var item in SportsLiveCommentary)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
     }
 
 }
